@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 開発者モード(デバッグしたい時にはコメント外してください。ユーザーのエラーページが無効にできます) -->
+<!-- 	<constant name="struts.devMode" value="true" /> -->
+	<constant name="struts.ui.theme" value="simple" />
+	<package name="com.internousdev.django.action" extends="struts-default">
+
+		<!-- 共通機能 -->
+		<action name="HomeAction" class="com.internousdev.django.action.HomeAction" method = "execute">
+					<result name="success">home.jsp</result>
+		</action>
+
+		<!-- ユーザー登録機能 -->
+		<action name="CreateUserAction" class="com.internousdev.django.action.CreateUserAction" method = "execute">
+					<result name="success">createUser.jsp</result>
+		</action>
+		<action name="CreateUserConfirmAction" class="com.internousdev.django.action.CreateUserConfirmAction" method = "execute">
+					<result name="success">createUserConfirm.jsp</result>
+					<result name="error">createUser.jsp</result>
+		</action>
+		<action name="CreateUserCompleteAction" class="com.internousdev.django.action.CreateUserCompleteAction" method = "execute">
+					<result name="success">createUserComplete.jsp</result>
+					<result name="error">systemError.jsp</result>
+		</action>
+
+		<!-- ログイン認証機能 -->
+		<action name="GoLoginAction" class="com.internousdev.django.action.GoLoginAction" method = "execute">
+					<result name="success">login.jsp</result>
+		</action>
+		<action name="LoginAction" class="com.internousdev.django.action.LoginAction" method = "execute">
+					<result name="success">home.jsp</result>
+					<result name="cart">cart.jsp</result>
+					<result name="DBError">systemError.html</result>
+					<result name="error">login.jsp</result>
+					<result name="sessionTimeout">sessionerror.jsp</result>
+		</action>
+
+		<!-- パスワード再設定機能 -->
+		<action name="ResetPasswordAction" class="com.internousdev.django.action.ResetPasswordAction" method = "execute">
+					<result name="success">resetPassword.jsp</result>
+		</action>
+		<action name="ResetPasswordConfirmAction" class="com.internousdev.django.action.ResetPasswordConfirmAction" method = "execute">
+					<result name="success">resetPasswordConfirm.jsp</result>
+					<result name="error">resetPassword.jsp</result>
+		</action>
+		<action name="ResetPasswordCompleteAction" class="com.internousdev.django.action.ResetPasswordCompleteAction" method = "execute">
+					<result name="success">resetPasswordComplete.jsp</result>
+					<result name="error">systemError.html</result>
+		</action>
+
+ 		<!-- 商品検索機能 -->
+		<action name="SearchItemAction" class="com.internousdev.django.action.SearchItemAction" method = "execute">
+					<result name="success">productList.jsp</result>
+		</action>
+
+ 		<!-- 商品詳細機能 -->
+		<action name="ProductDetailsAction" class="com.internousdev.django.action.ProductDetailsAction" method = "execute">
+					<result name="success">productDetails.jsp</result>
+		</action>
+		<action name="AddCartAction" class="com.internousdev.django.action.AddCartAction" method = "execute">
+					<result name="success">cart.jsp</result>
+					<result name="error">systemError.html</result>
+					<result name="sessionTimeOut">sessionerror.jsp</result>
+		</action>
+
+ 		<!-- カート機能 -->
+		<action name="CartAction" class="com.internousdev.django.action.CartAction" method = "execute">
+					<result name="success">cart.jsp</result>
+					<result name="error">systemError.html</result>
+					<result name="sessionTimeout">sessionerror.jsp</result>
+		</action>
+		<action name="DeleteCartAction" class="com.internousdev.django.action.DeleteCartAction" method = "execute">
+					<result name="success">cart.jsp</result>
+					<result name="error">systemError.html</result>
+					<result name="sessionTimeout">sessionerror.jsp</result>
+		</action>
+
+ 		<!-- 決済機能 -->
+		<action name="SettlementConfirmAction" class="com.internousdev.django.action.SettlementConfirmAction" method = "execute">
+					<result name="success">settlementConfirm.jsp</result>
+					<result name="loginError">sessionerror.jsp</result>
+		</action>
+		<action name="DeleteDestinationAction" class="com.internousdev.django.action.DeleteDestinationAction" method = "execute">
+					<result name="success">settlementConfirm.jsp</result>
+					<result name="error">systemError.html</result>
+					<result name="loginError">sessionerror.jsp</result>
+		</action>
+		<action name="SettlementCompleteAction" class="com.internousdev.django.action.SettlementCompleteAction" method = "execute">
+					<result name="success">settlementComplete.jsp</result>
+					<result name="error">systemError.html</result>
+					<result name="loginError">sessionerror.jsp</result>
+		</action>
+
+ 		<!-- 宛先登録機能 -->
+		<action name="CreateDestinationAction" class="com.internousdev.django.action.CreateDestinationAction" method = "execute">
+					<result name="success">createDestination.jsp</result>
+					<result name="loginError">sessionerror.jsp</result>
+		</action>
+		<action name="CreateDestinationConfirmAction" class="com.internousdev.django.action.CreateDestinationConfirmAction" method = "execute">
+					<result name="success">createDestinationConfirm.jsp</result>
+					<result name="error">createDestination.jsp</result>
+					<result name="loginError">sessionerror.jsp</result>
+		</action>
+		<action name="CreateDestinationCompleteAction" class="com.internousdev.django.action.CreateDestinationCompleteAction" method = "execute">
+					<result name="success">createDestinationComplete.jsp</result>
+					<result name="error">systemError.html</result>
+					<result name="loginError">sessionerror.jsp</result>
+		</action>
+
+ 		<!-- マイページ機能 -->
+		<action name="MyPageAction" class="com.internousdev.django.action.MyPageAction" method = "execute">
+					<result name="success">myPage.jsp</result>
+					<result name="loginError">sessionerror.jsp</result>
+		</action>
+
+ 		<!-- 商品購入履歴機能 -->
+		<action name="PurchaseHistoryAction" class="com.internousdev.django.action.PurchaseHistoryAction" method = "execute">
+					<result name="success">purchaseHistory.jsp</result>
+					<result name="loginError">sessionerror.jsp</result>
+		</action>
+		<action name="DeletePurchaseHistoryAction" class="com.internousdev.django.action.DeletePurchaseHistoryAction" method = "execute">
+					<result name="success">purchaseHistory.jsp</result>
+					<result name="error">systemError.html</result>
+					<result name="loginError">sessionerror.jsp</result>
+		</action>
+
+ 		<!-- ログアウト機能 -->
+		<action name="LogoutAction" class="com.internousdev.django.action.LogoutAction" method = "execute">
+					<result name="success">index.jsp</result>
+		</action>
+	</package>
+</struts>
